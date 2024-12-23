@@ -1,15 +1,15 @@
 [submodule "auth-ms"]
 	path = auth-ms
-	url = git@github.com:matheo97/auth-ms.git
+	url = git@github.com:Juan-Mateo-AI/auth-ms.git
 [submodule "client-gateway"]
 	path = client-gateway
-	url = git@github.com:matheo97/client-gateway.git
+	url = git@github.com:Juan-Mateo-AI/client-gateway.git
 [submodule "account-mw"]
 	path = account-mw
-	url = git@github.com:matheo97/account-mw.git
+	url = git@github.com:Juan-Mateo-AI/account-mw.git
 [submodule "ai-messaging-mw"]
 	path = ai-messaging-mw
-	url = git@github.com:jfernandezdev14/ai-messaging-middleware.git
+	url = git@github.com:Juan-Mateo-AI/ai-messaging-middleware.git
 [submodule "users-ms"]
 	path = users-ms
-	url = git@github.com:matheo97/users-ms.git
+	url = git@github.com:Juan-Mateo-AI/users-ms.git
