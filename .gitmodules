@@ -13,3 +13,6 @@
 [submodule "users-ms"]
 	path = users-ms
 	url = git@github.com:Juan-Mateo-AI/users-ms.git
+[submodule "ai-ms"]
+	path = ai-ms
+	url = git@github.com:Juan-Mateo-AI/ai-service-api.git
