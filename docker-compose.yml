@@ -72,6 +72,12 @@ services:
       - PORT=3002
       - DATABASE_URL=${USERS_DATABASE_URL}
       - NATS_SERVERS=nats://nats-server:4222
+      - MAIL_HOST=${USERS_MAIL_HOST}
+      - MAIL_USER=${USERS_MAIL_USER}
+      - MAIL_PASSWORD=${USERS_MAIL_PASSWORD}
+      - MAIL_FROM=${USERS_MAIL_FROM}
+      - MAIL_TRANSPORT=${USERS_MAIL_TRANSPORT}
+      - WEB_APP_URL=${USERS_WEB_APP_URL}
 
   ai-ms:
     build: ./ai-ms
@@ -79,9 +85,9 @@ services:
     networks:
       - default
     volumes:
-      - ./ai-ms:/app  # Mount current directory for live development
+      - ./ai-ms:/app # Mount current directory for live development
     ports:
-      - "8000:8000"  # Expose FastAPI app on port 8000
+      - "8000:8000" # Expose FastAPI app on port 8000
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
     environment:
       - PORT=8000
