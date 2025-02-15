@@ -8,6 +8,10 @@
 6. Ejecutar el comando, dentro de la carpeta users-ms `npx prisma generate`
 7. Ejecutar el comando, dentro de la carpeta users-ms `npx prisma migrate deploy`
 8. Ejecutar el comando, dentro de la carpeta users-ms `npx prisma db seed`
+9. Ejecutar el comando, dentro de la carpeta auth-ms `npx prisma generate`
+10. Ejecutar el comando, dentro de la carpeta auth-ms `npx prisma migrate deploy`
+11. Ejecutar el comando, dentro de la carpeta ai-messaging-mw `npx prisma generate`
+12. Ejecutar el comando, dentro de la carpeta ai-messaging-mw `npx prisma migrate deploy`
 
 ### Pasos para crear los Git Submodules
 

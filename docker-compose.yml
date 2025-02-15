@@ -46,7 +46,7 @@ services:
     environment:
       - PORT=3005
       - NATS_SERVERS=nats://nats-server:4222
-      - DATABASE_URL=randomurl
+      - DATABASE_URL=${AI_MESSAGING_DATABASE_URL}
 
   users-db:
     container_name: users_database
