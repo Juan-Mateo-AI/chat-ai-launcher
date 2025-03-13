@@ -5,6 +5,10 @@ services:
     image: nats:latest
     ports:
       - "8222:8222"
+    deploy:
+      resources:
+        limits:
+          memory: 50M
 
   client-gateway:
     build: ./client-gateway
@@ -16,6 +20,10 @@ services:
     environment:
       - PORT=3000
       - NATS_SERVERS=nats://nats-server:4222
+    deploy:
+      resources:
+        limits:
+          memory: 500M
 
   auth-ms:
     build: ./auth-ms
@@ -27,6 +35,10 @@ services:
       - NATS_SERVERS=nats://nats-server:4222
       - JWT_SECRET=${JWT_SECRET}
       - DATABASE_URL=${AUTH_DATABASE_URL}
+    deploy:
+      resources:
+        limits:
+          memory: 500M
 
   account-mw:
     build: ./account-mw
@@ -37,6 +49,10 @@ services:
       - PORT=3003
       - NATS_SERVERS=nats://nats-server:4222
       - JWT_SECRET=${JWT_SECRET}
+    deploy:
+      resources:
+        limits:
+          memory: 500M
 
   ai-messaging-mw:
     build: ./ai-messaging-mw
@@ -48,6 +64,10 @@ services:
       - NATS_SERVERS=nats://nats-server:4222
       - DATABASE_URL=${AI_MESSAGING_DATABASE_URL}
       - AI_SERVICE_API_HOST=${AI_SERVICE_API_HOST}
+    deploy:
+      resources:
+        limits:
+          memory: 500M
 
   users-db:
     container_name: users_database
@@ -61,6 +81,10 @@ services:
       - POSTGRES_USER=${USERS_POSTGRES_USER}
       - POSTGRES_PASSWORD=${USERS_POSTGRES_PASSWORD}
       - POSTGRES_DB=${USERS_POSTGRES_DB}
+    deploy:
+      resources:
+        limits:
+          memory: 100M
 
   users-ms:
     depends_on:
@@ -79,6 +103,10 @@ services:
       - MAIL_FROM=${USERS_MAIL_FROM}
       - MAIL_TRANSPORT=${USERS_MAIL_TRANSPORT}
       - WEB_APP_URL=${USERS_WEB_APP_URL}
+    deploy:
+      resources:
+        limits:
+          memory: 500M
 
   ai-ms:
     build: ./ai-ms
@@ -101,3 +129,7 @@ services:
       - JWT_ALGORITHM=${JWT_ALGORITHM}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
       - JWT_PUBLIC_KEY=${JWT_PUBLIC_KEY}
+    deploy:
+      resources:
+        limits:
+          memory: 300M
