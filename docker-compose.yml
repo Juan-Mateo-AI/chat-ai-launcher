@@ -63,6 +63,7 @@ services:
       - PORT=3005
       - NATS_SERVERS=nats://nats-server:4222
       - DATABASE_URL=${AI_MESSAGING_DATABASE_URL}
+      - AI_MESSAGING_DATABASE_URL=${AI_MESSAGING_DATABASE_URL}
       - AI_SERVICE_API_HOST=${AI_SERVICE_API_HOST}
     deploy:
       resources:
