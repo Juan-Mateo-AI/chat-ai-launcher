@@ -64,7 +64,6 @@ services:
       - NATS_SERVERS=nats://nats-server:4222
       - DATABASE_URL=${AI_MESSAGING_DATABASE_URL}
       - AI_MESSAGING_DATABASE_URL=${AI_MESSAGING_DATABASE_URL}
-      - AI_SERVICE_API_HOST=${AI_SERVICE_API_HOST}
     deploy:
       resources:
         limits:
@@ -111,14 +110,14 @@ services:
 
   ai-ms:
     build: ./ai-ms
-    image: fastapi-python-app:latest
+    image: python:latest
     networks:
       - default
     volumes:
-      - ./ai-ms:/app # Mount current directory for live development
+      - ./ai-ms:/app
     ports:
-      - "8000:8000" # Expose FastAPI app on port 8000
-    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+      - "8000:8000"
+    command: python main_nats.py
     environment:
       - PORT=8000
       - NATS_SERVERS=nats://nats-server:4222
@@ -130,7 +129,16 @@ services:
       - JWT_ALGORITHM=${JWT_ALGORITHM}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
       - JWT_PUBLIC_KEY=${JWT_PUBLIC_KEY}
+      - SERVICES_TO_RUN=all
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    dns_search: []
     deploy:
       resources:
         limits:
           memory: 300M
+
+networks:
+  default:
+    driver: bridge
